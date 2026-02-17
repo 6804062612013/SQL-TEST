@@ -49,3 +49,44 @@ values ("2222222222222","04"),
 ("3333333333333","14")
 ;
 
+create table register (
+courseID varchar(255),
+studentID varchar(255),
+year varchar(255),
+semester varchar(255),
+
+PRIMARY KEY(courseID,studentID),
+FOREIGN KEY(courseID) references course(courseID),
+FOREIGN KEY(studentID) references student(studentID) 
+);
+
+CANCLE CTRL C;
+
+insert into register (courseID,studentID,year,semester)
+values ("040613331","5904062600001","2018","1"),
+("040613331","5904062600002","2018","1"),
+("040613325","5904062600003","2018","1"),
+("040613325","5904062600004","2018","2"),
+("040613331","5904062600005","2018","2")
+;
+
+create table register (
+courseID varchar(255),
+studentID varchar(255),
+year varchar(255),
+semester varchar(255),
+
+PRIMARY KEY(studentID,courseID),
+FOREIGN KEY(courseID) references course(courseID),
+FOREIGN KEY(studentID) references student(studentID) 
+);
+
+select * from student,faculty where student.facultID > faculty.facultyID and title <> "2222222222222";
+
+select student.studentID,courseName,year,semester,firstName,facultID
+ from student,register,course
+ where student.studentID = register.studentID and course.courseID = register.courseID ;
+
+select s.studentID,courseName,year,semester,firstName,facultID as facID
+ from student s,register,course
+ where s.studentID = register.studentID and course.courseID = register.courseID ;
