@@ -1,0 +1,51 @@
+DB01 ;
+
+create table faculty(
+facultyID varchar(255),
+facultyName varchar(255),
+PRIMARY KEY(facultyID) 
+);
+
+create table course(
+courseID varchar(255),
+courseName varchar(255),
+credit int,
+PRIMARY KEY(courseID)
+);
+
+create table student(
+studentID varchar(255),
+title varchar(10),
+firstName varchar(255),
+lastName varchar(255),
+facultID varchar(255),
+PRIMARY KEY(studentID),
+FOREIGN KEY(facultID) REFERENCES faculty(facultyID)
+);
+
+insert into faculty(facultyID,facultyName)
+VALUES("01","eng"),
+("04","sci"),
+("14","bus")
+;
+
+insert into course(courseID,courseName,credit)
+VALUES ("040613325","programming language",3),
+("040613331","database systems",3)
+;
+
+alter table student modify studentID varchar(255);
+
+insert into student(studentID,title,firstName,lastName,facultID)
+values ("5904062600004","Mr","Chin","Nicha","01"),
+("5904062600005","Mr","Boon","Dumrong","04"),
+("5904062600001","Mr","Kitty","Kumpha","04"),
+("5904062600002","Miss","Waree","Sammi","14"),
+("5904062600003","Miss","Kanit","Kumpha","14"),
+;
+
+insert into student(studentID,facultID)
+values ("2222222222222","04"),
+("3333333333333","14")
+;
+
